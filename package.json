@@ -1,23 +1,18 @@
 {
-  "name": "vitepress",
-  "version": "1.0.0",
-  "main": "./docs/index.md",
-  "repository": "https://github.com/dongleicode/blog.git",
-  "author": "jinrui",
-  "license": "MIT",
+  "name": "Jory-blog",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "dev": "vitepress dev docs --port 1234",
-    "build": "vitepress build docs",
-    "preview": "vitepress preview docs",
-    "serve": "vitepress serve docs",
-    "deploy": "bash deploy.sh"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "devDependencies": {
-    "sass": "^1.57.1"
-  },
-  "description": "技术成长过程点滴记录",
   "dependencies": {
-    "vitepress": "^1.0.0-alpha.40",
-    "vue": "^3.2.45"
+    "@astrojs/starlight": "^0.32.2",
+    "astro": "^5.1.5",
+    "sharp": "^0.32.5"
   }
 }
