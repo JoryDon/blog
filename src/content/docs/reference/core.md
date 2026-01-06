@@ -1,5 +1,5 @@
 ---
-title: vue2 与 vue3的核心方法不同
+title: vue2与vue3的核心不同
 description: 原理挖掘
 ---
 
