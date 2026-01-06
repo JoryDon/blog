@@ -11,7 +11,7 @@ export default defineConfig({
 				{
 					icon: 'github',
 					label: 'GitHub',
-					href: 'https://gitcode.com/Jin-rui/blog',
+					href: 'https://github.com/JoryDon/blog',
 				}
 			],
 			sidebar: [
