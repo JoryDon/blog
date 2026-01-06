@@ -1,15 +1,19 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'Jory',
-			social: {
-				github: 'https://gitcode.com/Jin-rui/blog',
-			},
+			title: '希东',
+			social: [
+				{
+					icon: 'github',
+					label: 'GitHub',
+					href: 'https://gitcode.com/Jin-rui/blog',
+				}
+			],
 			sidebar: [
 				{
 					label: '指南',

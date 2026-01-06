@@ -6,3 +6,4 @@ node_modules
 
 # Bundle
 dist
+.pnpm-lock.yaml
