@@ -1,0 +1,37 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>🧑‍🚀 所有过往 都是一种经历</h1>
+			<p>
+				“不只是树，人也是一样，在不确定中生活的人，能比较经得起生活的考验，会锻炼出一颗独立自主的心。在不确定中，就能学会把很少的养分转化为巨大的能量，努力生长。”
+			</p>
+			<p class="text-right">
+				—— <b>林清玄《桃花心木》</b>
+			</p>
+			<p>
+				<b>
+					从前慢，现在快，慢下来会好点
+				</b>
+			</p>
+			<p>
+				先知道林清玄，我一路狂奔，义无反顾
+			</p>
+			<p>
+				后看了木心的书，更是欢喜
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>

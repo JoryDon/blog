@@ -1,35 +1,18 @@
 // @ts-check
-import starlight from '@astrojs/starlight';
+
+import db from '@astrojs/db';
+import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
+import UnoCSS from 'unocss/astro';
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [
-		starlight({
-			title: '希东',
-			social: [
-				{
-					icon: 'github',
-					label: 'GitHub',
-					href: 'https://github.com/JoryDon/blog',
-				}
-			],
-			sidebar: [
-				{
-					label: '指南',
-					items: [
-						{ label: '简介', slug: 'guides/home' },
-					],
-				},
-				{
-					label: '浮生',
-					autogenerate: { directory: 'life' },
-				},
-				{
-					label: '技术',
-					autogenerate: { directory: 'reference' },
-				},
-			],
-		}),
-	],
+  site: 'https://example.com',
+  integrations: [UnoCSS(), mdx(), sitemap(), db()],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

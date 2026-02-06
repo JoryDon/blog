@@ -1,6 +1,8 @@
 ---
 title: 三字经
 description: 《中国传统文化精品丛书》三字经 百家姓 千字文 弟子规 大骤 注 陕西人民出版社
+pubDate: 'Feb 06 2026'
+heroImage: '../../../assets/blog-placeholder-4.jpg'
 ---
 
 ## （民国）章太炎
