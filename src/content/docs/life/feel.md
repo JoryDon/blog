@@ -1,8 +1,8 @@
 ---
 title: 浮生若梦 为欢几何
 description: 吾生也有涯，而知也无涯。以有涯随无涯，殆已！ ———— 庄子.
-pubDate: 'Jun 07 2026'
-heroImage: '../../assets/blog-placeholder-5.jpg'
+pubDate: 'Mar 10 2025'
+heroImage: '../../../assets/blog-placeholder-5.jpg'
 ---
 
 ## 一
