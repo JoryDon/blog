@@ -21,6 +21,7 @@
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
+    "@unocss/astro": "^66.7.0",
     "@unocss/reset": "^66.7.0",
     "unocss": "^66.7.0"
   }
