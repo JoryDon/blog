@@ -1,15 +1,15 @@
 ---
 import { withBase } from '../utils/paths';
 
-const redirects = [
-	{ legacy: 'guides/home', target: '/blog/top/' },
-	{ legacy: 'life/feel', target: '/docs/index/' },
-	{ legacy: 'life/sanzijing', target: '/blog/chinese/sanzijing/' },
-	{ legacy: 'reference/core', target: '/blog/first/' },
-	{ legacy: 'reference/js', target: '/blog/second/' },
-];
-
 export function getStaticPaths() {
+	const redirects = [
+		{ legacy: 'guides/home', target: '/blog/top/' },
+		{ legacy: 'life/feel', target: '/docs/index/' },
+		{ legacy: 'life/sanzijing', target: '/blog/chinese/sanzijing/' },
+		{ legacy: 'reference/core', target: '/blog/first/' },
+		{ legacy: 'reference/js', target: '/blog/second/' },
+	];
+
 	return redirects.map(({ legacy, target }) => ({
 		params: { legacy },
 		props: { target },
