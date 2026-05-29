@@ -5,10 +5,12 @@ import { withBase } from '../utils/paths';
 
 export async function GET(context) {
 	const posts = await getCollection('blog');
+	const site = new URL(withBase('/'), context.site);
+
 	return rss({
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
-		site: context.site,
+		site,
 		items: posts.map((post) => ({
 			...post.data,
 			link: withBase(`/blog/${post.id}/`),
