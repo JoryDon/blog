@@ -1,0 +1,34 @@
+---
+import { withBase } from '../utils/paths';
+
+const redirects = [
+	{ legacy: 'guides/home', target: '/blog/top/' },
+	{ legacy: 'life/feel', target: '/docs/index/' },
+	{ legacy: 'life/sanzijing', target: '/blog/chinese/sanzijing/' },
+	{ legacy: 'reference/core', target: '/blog/first/' },
+	{ legacy: 'reference/js', target: '/blog/second/' },
+];
+
+export function getStaticPaths() {
+	return redirects.map(({ legacy, target }) => ({
+		params: { legacy },
+		props: { target },
+	}));
+}
+
+const target = withBase(Astro.props.target);
+const canonicalURL = new URL(target, Astro.site);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="refresh" content={`0;url=${target}`} />
+		<link rel="canonical" href={canonicalURL} />
+		<title>Redirecting...</title>
+	</head>
+	<body>
+		<p>页面已迁移：<a href={target}>点击访问新地址</a></p>
+	</body>
+</html>
