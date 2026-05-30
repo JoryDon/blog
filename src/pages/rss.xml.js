@@ -4,7 +4,10 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 export async function GET(context) {
 	const posts = await getCollection('blog');
-	const site = new URL(import.meta.env.BASE_URL, context.site);
+	const base = import.meta.env.BASE_URL.endsWith('/')
+		? import.meta.env.BASE_URL
+		: `${import.meta.env.BASE_URL}/`;
+	const site = new URL(base, context.site);
 
 	return rss({
 		title: SITE_TITLE,
