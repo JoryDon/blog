@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { withBase } from '../../utils/urls';
 
 const posts = (await getCollection('docs')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -92,7 +93,7 @@ const posts = (await getCollection('docs')).sort(
 				<nav>
 					{
 						posts.map((post) => (
-								<a href={`/docs/${post.id}/`} class="pb-[10px] color-red">
+								<a href={withBase(`/docs/${post.id}/`)} class="pb-[10px] color-red">
 									{/* {post.data.heroImage && (
 										<Image width={720} height={30} src={post.data.heroImage} alt="" />
 									)} */}
