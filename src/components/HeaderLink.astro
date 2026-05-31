@@ -1,15 +1,18 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { withBase, withoutBase } from '../utils/urls';
 
 type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+const pathname = withoutBase(Astro.url.pathname);
+const linkPath = typeof href === 'string' ? withoutBase(href) : '';
 const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+const isActive = linkPath === pathname || linkPath === '/' + (subpath?.[0] || '');
+const resolvedHref = typeof href === 'string' ? withBase(href) : href;
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a href={resolvedHref} class:list={[className, { active: isActive }]} {...props}>
 	<slot />
 </a>
 <style>
