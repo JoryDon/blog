@@ -5,10 +5,11 @@ import { withBase, withoutBase } from '../utils/urls';
 type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
+const normalizePath = (path: string) => (path !== '/' ? path.replace(/\/$/, '') : path);
 const pathname = withoutBase(Astro.url.pathname);
-const linkPath = typeof href === 'string' ? withoutBase(href) : '';
+const linkPath = typeof href === 'string' ? normalizePath(href) : '';
 const subpath = pathname.match(/[^\/]+/g);
-const isActive = linkPath === pathname || linkPath === '/' + (subpath?.[0] || '');
+const isActive = linkPath === normalizePath(pathname) || linkPath === '/' + (subpath?.[0] || '');
 const resolvedHref = typeof href === 'string' ? withBase(href) : href;
 ---
 
