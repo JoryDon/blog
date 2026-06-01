@@ -31,7 +31,7 @@ for (const file of files) {
 assertIncludes('dist/index.html', 'href="/blog/"');
 assertIncludes('dist/index.html', 'href="/blog/blog"');
 assertIncludes('dist/index.html', 'href="/blog/docs"');
-assertIncludes('dist/index.html', 'href="/blog/rss.xml"');
+assertIncludes('dist/index.html', 'href="https://jinruihub.github.io/blog/rss.xml"');
 assertIncludes('dist/index.html', 'href="/blog/sitemap-index.xml"');
 assertIncludes('dist/rss.xml', '<link>https://jinruihub.github.io/blog/</link>');
 assertIncludes('dist/rss.xml', 'https://jinruihub.github.io/blog/blog/');
