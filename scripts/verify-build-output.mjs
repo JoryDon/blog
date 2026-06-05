@@ -48,35 +48,37 @@ for (const path of textFiles) {
 	assertNotIncludes(content, 'href="/favicon.svg"', label);
 	assertNotIncludes(content, 'href="/sitemap-index.xml"', label);
 	assertNotIncludes(content, 'href="/fonts/', label);
+	assertNotIncludes(content, 'href="/_astro/', label);
+	assertNotIncludes(content, 'src="/_astro/', label);
 	assertNotIncludes(content, 'url(/fonts/', label);
 	assertNotIncludes(content, 'url("/fonts/', label);
 	assertNotIncludes(content, 'href="/blog"', label);
 	assertNotIncludes(content, 'href="/docs"', label);
 }
 
-const home = readDistFile('blog/index.html');
+const home = readDistFile('index.html');
 assertIncludes(home, 'href="/blog/"', 'home page');
 assertIncludes(home, 'href="/blog/blog/"', 'home page');
 assertIncludes(home, 'href="/blog/docs/"', 'home page');
 assertIncludes(home, 'href="/blog/favicon.svg"', 'home page');
 assertIncludes(home, 'href="/blog/fonts/atkinson-regular.woff"', 'home page');
-assertIncludes(home, 'url(/blog/fonts/atkinson-regular.woff)', 'home page');
+assertIncludes(home, 'url("/blog/fonts/atkinson-regular.woff")', 'home page');
 assertIncludes(home, 'href="https://jinruihub.github.io/blog/rss.xml"', 'home page');
 assertIncludes(home, 'href="https://jinruihub.github.io/blog/"', 'home page canonical');
 
-const blogIndex = readDistFile('blog/blog/index.html');
+const blogIndex = readDistFile('blog/index.html');
 assertIncludes(blogIndex, 'href="/blog/blog/second/"', 'blog index');
 assertIncludes(blogIndex, 'href="/blog/blog/chinese/sanzijing/"', 'blog index');
 
-const docsIndex = readDistFile('blog/docs/index.html');
+const docsIndex = readDistFile('docs/index.html');
 assertIncludes(docsIndex, 'href="/blog/docs/guides/example/"', 'docs index');
 assertIncludes(docsIndex, 'href="/blog/docs/reference/example/"', 'docs index');
 
-const rss = readDistFile('blog/rss.xml');
+const rss = readDistFile('rss.xml');
 assertIncludes(rss, '<link>https://jinruihub.github.io/blog/</link>', 'RSS channel');
 assertIncludes(rss, 'https://jinruihub.github.io/blog/blog/second/', 'RSS item');
 
-const sitemap = readDistFile('blog/sitemap-0.xml');
+const sitemap = readDistFile('sitemap-0.xml');
 assertIncludes(sitemap, '<loc>https://jinruihub.github.io/blog/</loc>', 'sitemap');
 assertIncludes(sitemap, '<loc>https://jinruihub.github.io/blog/blog/second/</loc>', 'sitemap');
 

@@ -16,6 +16,21 @@ interface Props {
 const { title, description, image = FallbackImage } = Astro.props;
 const canonicalURL = absoluteUrl(Astro.url.pathname, Astro.site);
 const imageUrl = absoluteUrl(image.src, Astro.site);
+const fontFaceCss = `
+@font-face {
+	font-family: "Atkinson";
+	src: url("${withBase('/fonts/atkinson-regular.woff')}") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Atkinson";
+	src: url("${withBase('/fonts/atkinson-bold.woff')}") format("woff");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}`;
 ---
 
 <!-- Global Metadata -->
@@ -34,6 +49,7 @@ const imageUrl = absoluteUrl(image.src, Astro.site);
 <!-- Font preloads -->
 <link rel="preload" href={withBase('/fonts/atkinson-regular.woff')} as="font" type="font/woff" crossorigin />
 <link rel="preload" href={withBase('/fonts/atkinson-bold.woff')} as="font" type="font/woff" crossorigin />
+<style is:inline set:html={fontFaceCss} />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
