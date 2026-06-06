@@ -26,12 +26,12 @@ function assertNotIncludes(content, unexpected, label) {
 	}
 }
 
-const home = readDistFile('blog/index.html');
-const blogIndex = readDistFile('blog/blog/index.html');
-const docsIndex = readDistFile('blog/docs/index.html');
-const firstPost = readDistFile('blog/blog/first/index.html');
-const rss = readDistFile('blog/rss.xml');
-const sitemap = readDistFile('blog/sitemap-0.xml');
+const home = readDistFile('index.html');
+const blogIndex = readDistFile('blog/index.html');
+const docsIndex = readDistFile('docs/index.html');
+const firstPost = readDistFile('blog/first/index.html');
+const rss = readDistFile('rss.xml');
+const sitemap = readDistFile('sitemap-0.xml');
 
 for (const [label, content] of [
 	['home', home],
@@ -64,9 +64,9 @@ assertIncludes(sitemap, `<loc>${site}/blog/</loc>`, 'sitemap');
 assertIncludes(sitemap, `<loc>${site}/blog/blog/first/</loc>`, 'sitemap');
 
 for (const assetPath of [
-	'blog/favicon.svg',
-	'blog/fonts/atkinson-regular.woff',
-	'blog/fonts/atkinson-bold.woff',
+	'favicon.svg',
+	'fonts/atkinson-regular.woff',
+	'fonts/atkinson-bold.woff',
 ]) {
 	if (!existsSync(join(dist.pathname, assetPath))) {
 		throw new Error(`Expected asset at ${assetPath}`);
