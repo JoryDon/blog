@@ -11,6 +11,13 @@ import UnoCSS from 'unocss/astro';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
+  redirects: {
+    '/guides/home/': '/blog/top/',
+    '/life/feel/': '/docs/index/',
+    '/life/sanzijing/': '/blog/chinese/sanzijing/',
+    '/reference/core/': '/blog/first/',
+    '/reference/js/': '/blog/second/',
+  },
   integrations: [UnoCSS(), expressive(), mdx(), sitemap(), db()],
 
   vite: {
