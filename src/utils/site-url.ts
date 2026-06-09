@@ -47,5 +47,5 @@ export function absoluteUrl(path: string, site: URL | string | undefined) {
 		throw new Error('Astro site config is required to build absolute URLs.');
 	}
 
-	return new URL(withBase(stripBase(path)), site).toString();
+	return new URL(withBase(path), site).toString();
 }
