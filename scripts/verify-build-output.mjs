@@ -68,13 +68,14 @@ for (const [context, content] of [
 	assertContains(content, 'href="/blog/fonts/atkinson-bold.woff"', context);
 	assertContains(content, 'url("/blog/fonts/atkinson-regular.woff")', context);
 	assertContains(content, 'url("/blog/fonts/atkinson-bold.woff")', context);
-	assertContains(content, 'href="/blog/_astro/', context);
 	assertNoRootLocalUrls(content, context);
 }
 
 assertContains(home, 'href="https://jinruihub.github.io/blog/"', 'home canonical');
 assertContains(blogIndex, 'href="/blog/blog/first/"', 'blog index post link');
 assertContains(docsIndex, 'href="/blog/docs/guides/example/"', 'docs index doc link');
+assertContains(firstPost, 'href="/blog/_astro/', 'first post CSS asset');
+assertContains(firstPost, 'src="/blog/_astro/', 'first post JS asset');
 assertContains(firstPost, 'href="https://jinruihub.github.io/blog/blog/first/"', 'first post canonical');
 assertContains(rss, '<link>https://jinruihub.github.io/blog/</link>', 'RSS channel link');
 assertContains(rss, '<link>https://jinruihub.github.io/blog/blog/first/</link>', 'RSS item link');
