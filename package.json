@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "test:build-output": "pnpm build && node scripts/verify-build-output.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
