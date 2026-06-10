@@ -29,7 +29,8 @@ const home = readDist('index.html');
 const blogIndex = readDist('blog/index.html');
 const docsIndex = readDist('docs/index.html');
 const rss = readDist('rss.xml');
-const sitemap = readDist('sitemap-index.xml');
+const sitemapIndex = readDist('sitemap-index.xml');
+const sitemap = readDist('sitemap-0.xml');
 
 for (const [label, html] of [
 	['home page', home],
@@ -37,6 +38,7 @@ for (const [label, html] of [
 	['docs index', docsIndex],
 ]) {
 	assertNotMatches(html, /https:\/\/example\.com/, label);
+	assertNotMatches(html, /\{fontFaceStyles\}/, label);
 	assertNotMatches(html, /href="\/(?:favicon\.svg|fonts\/|sitemap-index\.xml|rss\.xml)/, label);
 	assertNotMatches(html, /href="\/docs(?:\/|")/, label);
 	assertIncludes(html, 'href="/blog/favicon.svg"', label);
@@ -55,6 +57,8 @@ assertNotMatches(rss, /https:\/\/example\.com/, 'RSS feed');
 assertIncludes(rss, 'https://jinruihub.github.io/blog/', 'RSS feed');
 assertIncludes(rss, 'https://jinruihub.github.io/blog/blog/first/', 'RSS feed');
 assertNotMatches(sitemap, /https:\/\/example\.com/, 'sitemap');
+assertNotMatches(sitemapIndex, /https:\/\/example\.com/, 'sitemap index');
+assertIncludes(sitemapIndex, 'https://jinruihub.github.io/blog/sitemap-0.xml', 'sitemap index');
 assertIncludes(sitemap, 'https://jinruihub.github.io/blog/', 'sitemap');
 assertIncludes(sitemap, 'https://jinruihub.github.io/blog/blog/first/', 'sitemap');
 

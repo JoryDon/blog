@@ -50,7 +50,7 @@ const fontFaceStyles = `
 <!-- Font preloads -->
 <link rel="preload" href={withBase('/fonts/atkinson-regular.woff')} as="font" type="font/woff" crossorigin />
 <link rel="preload" href={withBase('/fonts/atkinson-bold.woff')} as="font" type="font/woff" crossorigin />
-<style is:inline>{fontFaceStyles}</style>
+<style is:inline set:html={fontFaceStyles}></style>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={Astro.url} />
