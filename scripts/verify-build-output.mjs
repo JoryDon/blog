@@ -33,17 +33,17 @@ function walkFiles(dir) {
 	});
 }
 
-const home = readDistFile('blog/index.html');
-const blogIndex = readDistFile('blog/blog/index.html');
-const firstPost = readDistFile('blog/blog/first/index.html');
-const docsIndex = readDistFile('blog/docs/index.html');
-const rss = readDistFile('blog/rss.xml');
-const sitemapIndex = readDistFile('blog/sitemap-index.xml');
-const sitemap = readDistFile('blog/sitemap-0.xml');
+const home = readDistFile('index.html');
+const blogIndex = readDistFile('blog/index.html');
+const firstPost = readDistFile('blog/first/index.html');
+const docsIndex = readDistFile('docs/index.html');
+const rss = readDistFile('rss.xml');
+const sitemapIndex = readDistFile('sitemap-index.xml');
+const sitemap = readDistFile('sitemap-0.xml');
 
-assert(existsSync(join(distDir, 'blog/favicon.svg')), 'Expected favicon under /blog/');
-assert(existsSync(join(distDir, 'blog/fonts/atkinson-regular.woff')), 'Expected regular font under /blog/');
-assert(existsSync(join(distDir, 'blog/fonts/atkinson-bold.woff')), 'Expected bold font under /blog/');
+assert(existsSync(join(distDir, 'favicon.svg')), 'Expected favicon in build output');
+assert(existsSync(join(distDir, 'fonts/atkinson-regular.woff')), 'Expected regular font in build output');
+assert(existsSync(join(distDir, 'fonts/atkinson-bold.woff')), 'Expected bold font in build output');
 
 assertIncludes(home, 'href="/blog/"', 'home page');
 assertIncludes(home, 'href="/blog/blog"', 'home page');
