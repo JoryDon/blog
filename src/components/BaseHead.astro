@@ -5,7 +5,7 @@ import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
 import { SITE_TITLE } from '../consts';
-import { absoluteWithBase, withBase } from '../utils/site-url';
+import { absoluteAssetWithBase, absoluteWithBase, withBase, withoutBase } from '../utils/site-url';
 
 interface Props {
 	title: string;
@@ -14,8 +14,8 @@ interface Props {
 }
 
 const { title, description, image = FallbackImage } = Astro.props;
-const canonicalURL = absoluteWithBase(Astro.url.pathname, Astro.site);
-const imageURL = absoluteWithBase(image.src, Astro.site);
+const canonicalURL = absoluteWithBase(withoutBase(Astro.url.pathname), Astro.site);
+const imageURL = absoluteAssetWithBase(image.src, Astro.site);
 const fontFaceCSS = `
 	@font-face {
 		font-family: "Atkinson";

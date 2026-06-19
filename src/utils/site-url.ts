@@ -14,14 +14,24 @@ export function withBase(path: string) {
 	if (!basePath) {
 		return normalizedPath;
 	}
-	if (normalizedPath === basePath || normalizedPath.startsWith(`${basePath}/`)) {
-		return normalizedPath;
-	}
 	if (normalizedPath === '/') {
 		return `${basePath}/`;
 	}
 
 	return `${basePath}${normalizedPath}`;
+}
+
+export function assetWithBase(path: string) {
+	if (!path || isAbsoluteUrl(path) || path.startsWith('#')) {
+		return path;
+	}
+
+	const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+	if (!basePath || normalizedPath === basePath || normalizedPath.startsWith(`${basePath}/`)) {
+		return normalizedPath;
+	}
+
+	return withBase(normalizedPath);
 }
 
 export function withoutBase(path: string) {
@@ -39,4 +49,9 @@ export function withoutBase(path: string) {
 export function absoluteWithBase(path: string, site: URL | string | undefined) {
 	const siteUrl = site ?? 'https://jinruihub.github.io';
 	return new URL(withBase(path), siteUrl).toString();
+}
+
+export function absoluteAssetWithBase(path: string, site: URL | string | undefined) {
+	const siteUrl = site ?? 'https://jinruihub.github.io';
+	return new URL(assetWithBase(path), siteUrl).toString();
 }
