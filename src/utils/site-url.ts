@@ -48,7 +48,7 @@ export function assetWithBase(path: string) {
 }
 
 export function absoluteWithBase(path: string) {
-	return new URL(withBase(withoutBase(path)), siteOrigin).toString();
+	return new URL(withBase(path), siteOrigin).toString();
 }
 
 export function absoluteAssetWithBase(path: string) {
