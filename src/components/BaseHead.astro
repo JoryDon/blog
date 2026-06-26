@@ -16,7 +16,7 @@ interface Props {
 const canonicalURL = absoluteWithBase(withoutBase(Astro.url.pathname));
 
 const { title, description, image = FallbackImage } = Astro.props;
-const imageURL = absoluteWithBase(image.src);
+const imageURL = absoluteWithBase(withoutBase(image.src));
 const fontFaceCSS = `
 @font-face {
 	font-family: "Atkinson";
