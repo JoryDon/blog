@@ -46,6 +46,7 @@ const textOutputFiles = walkFiles(distDir).filter((file) => /\.(html|xml)$/.test
 for (const file of textOutputFiles) {
 	const content = readFileSync(file, 'utf8');
 	assertNotIncludes(content, 'https://example.com', file);
+	assertNotIncludes(content, 'https://jinruihub.github.io/blog/blog/_astro/', file);
 	assertNoMatch(content, /href="\/(?=["?#])/g, file);
 	assertNoMatch(content, /href="\/blog(?=["?#])/g, file);
 	assertNoMatch(content, /href="\/docs(?=["?#])/g, file);
@@ -65,6 +66,11 @@ assertIncludes(home, 'href="/blog/fonts/atkinson-regular.woff"', 'index.html');
 assertIncludes(home, 'url("/blog/fonts/atkinson-regular.woff")', 'index.html');
 assertIncludes(home, 'href="https://jinruihub.github.io/blog/rss.xml"', 'index.html');
 assertIncludes(home, 'href="https://jinruihub.github.io/blog/"', 'index.html');
+assertIncludes(
+	home,
+	'content="https://jinruihub.github.io/blog/_astro/blog-placeholder-1.',
+	'index.html',
+);
 
 const blogIndex = readDistFile('blog/index.html');
 assertIncludes(blogIndex, 'href="/blog/blog/first/"', 'blog/index.html');
