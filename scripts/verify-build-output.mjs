@@ -1,7 +1,9 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 
 const distDir = new URL('../dist/', import.meta.url);
+const distPath = fileURLToPath(distDir);
 
 function readDist(relativePath) {
 	const filePath = new URL(relativePath, distDir);
@@ -45,7 +47,7 @@ function assertNotMatches(content, unexpected, label) {
 	}
 }
 
-const allOutput = readAllFiles(distDir).join('\n');
+const allOutput = readAllFiles(distPath).join('\n');
 const home = readDist('index.html');
 const blogIndex = readDist('blog/index.html');
 const docsIndex = readDist('docs/index.html');
