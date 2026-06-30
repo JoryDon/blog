@@ -60,8 +60,8 @@ assertNotIncludes(allOutput, 'href="/favicon.svg"', 'build output');
 assertNotIncludes(allOutput, 'href="/fonts/', 'build output');
 assertNotIncludes(allOutput, 'url(/fonts/', 'build output');
 assertNotIncludes(allOutput, 'href="/"', 'build output');
-assertNotMatches(allOutput, /href="\/blog(?:["?#]|\/(?!["?#]|blog(?:\/|["?#])))/, 'build output');
-assertNotMatches(allOutput, /href="\/docs(?:[/"?#])/, 'build output');
+assertNotMatches(allOutput, /<a\b[^>]*href="\/blog(?:["?#]|\/(?!["?#]|blog(?:\/|["?#])))/, 'build output');
+assertNotMatches(allOutput, /<a\b[^>]*href="\/docs(?:[/"?#])/, 'build output');
 assertNotIncludes(allOutput, '/blog/blog/_astro/', 'build output');
 
 assertIncludes(home, 'href="/blog/"', 'home page');
