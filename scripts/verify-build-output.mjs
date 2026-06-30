@@ -41,13 +41,8 @@ function assertNotIncludes(content, unexpected, label) {
 	}
 }
 
-function assertNotMatches(content, unexpected, label) {
-	if (unexpected.test(content)) {
-		throw new Error(`${label} matched unexpected output: ${unexpected}`);
-	}
-}
-
 const allOutput = readAllFiles(distPath).join('\n');
+const anchorHrefs = [...allOutput.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map((match) => match[1]);
 const home = readDist('index.html');
 const blogIndex = readDist('blog/index.html');
 const docsIndex = readDist('docs/index.html');
@@ -59,10 +54,18 @@ assertNotIncludes(allOutput, 'https://example.com', 'build output');
 assertNotIncludes(allOutput, 'href="/favicon.svg"', 'build output');
 assertNotIncludes(allOutput, 'href="/fonts/', 'build output');
 assertNotIncludes(allOutput, 'url(/fonts/', 'build output');
-assertNotIncludes(allOutput, 'href="/"', 'build output');
-assertNotMatches(allOutput, /<a\b[^>]*href="\/blog(?:["?#]|\/(?!["?#]|blog(?:\/|["?#])))/, 'build output');
-assertNotMatches(allOutput, /<a\b[^>]*href="\/docs(?:[/"?#])/, 'build output');
 assertNotIncludes(allOutput, '/blog/blog/_astro/', 'build output');
+
+for (const href of anchorHrefs) {
+	if (
+		href.startsWith('/') &&
+		href !== '/blog/' &&
+		!href.startsWith('/blog/blog') &&
+		!href.startsWith('/blog/docs')
+	) {
+		throw new Error(`Anchor href is missing the GitHub Pages base path: ${href}`);
+	}
+}
 
 assertIncludes(home, 'href="/blog/"', 'home page');
 assertIncludes(home, 'href="/blog/blog"', 'home page');
