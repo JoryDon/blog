@@ -26,10 +26,6 @@ export function withBase(path = '/') {
 		return `${normalizedBase}/`;
 	}
 
-	if (normalizedPath === normalizedBase || normalizedPath.startsWith(`${normalizedBase}/`)) {
-		return normalizedPath;
-	}
-
 	return `${normalizedBase}${normalizedPath}`;
 }
 
