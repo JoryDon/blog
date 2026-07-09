@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:build-output": "pnpm build && node scripts/verify-build-output.mjs"
   },
   "dependencies": {
     "@astrojs/db": "^0.18.3",
