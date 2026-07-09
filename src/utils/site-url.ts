@@ -59,3 +59,10 @@ export function absoluteWithBase(path: string, site: string | URL | undefined) {
 
 	return new URL(withBase(withoutBase(path)), site).toString();
 }
+
+export function absoluteRouteWithBase(path: string, site: string | URL | undefined) {
+	if (!site) return withBase(path);
+	if (isSpecialUrl(path) && !path.startsWith('//')) return path;
+
+	return new URL(withBase(path), site).toString();
+}
