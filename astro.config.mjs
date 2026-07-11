@@ -10,7 +10,8 @@ import UnoCSS from 'unocss/astro';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://jinruihub.github.io',
+  base: '/blog/',
   integrations: [UnoCSS(), expressive(), mdx(), sitemap(), db()],
 
   vite: {
