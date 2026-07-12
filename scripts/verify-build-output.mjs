@@ -52,8 +52,8 @@ for (const [file, content] of textFiles) {
 
 const home = readDistFile('index.html');
 assertIncludes(home, 'href="/blog/"', 'index.html');
-assertIncludes(home, 'href="/blog/blog"', 'index.html');
-assertIncludes(home, 'href="/blog/docs"', 'index.html');
+assertIncludes(home, 'href="/blog/blog/"', 'index.html');
+assertIncludes(home, 'href="/blog/docs/"', 'index.html');
 assertIncludes(home, 'href="/blog/favicon.svg"', 'index.html');
 assertIncludes(home, 'href="/blog/fonts/atkinson-regular.woff"', 'index.html');
 assertIncludes(home, 'url("/blog/fonts/atkinson-regular.woff")', 'index.html');
