@@ -69,7 +69,7 @@ assertIncludes(docsIndex, 'href="/blog/docs/guides/example/"', 'docs/index.html'
 assertIncludes(docsIndex, 'href="https://jinruihub.github.io/blog/docs/"', 'docs/index.html');
 
 const rss = readDistFile('rss.xml');
-assertIncludes(rss, '<link>https://jinruihub.github.io/blog/rss.xml</link>', 'rss.xml');
+assertIncludes(rss, '<link>https://jinruihub.github.io/blog/</link>', 'rss.xml');
 assertIncludes(rss, '<link>https://jinruihub.github.io/blog/blog/first/</link>', 'rss.xml');
 assertNotIncludes(rss, '<link>https://jinruihub.github.io/blog/first/</link>', 'rss.xml');
 

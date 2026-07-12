@@ -5,9 +5,14 @@ import { withBase } from '../utils/site-url';
 type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+const normalizeRoute = (value: string) => {
+	const route = value.startsWith('/') ? value : `/${value}`;
+	return route === '/' ? route : route.replace(/\/+$/, '');
+};
+const pathname = normalizeRoute(Astro.url.pathname.replace(import.meta.env.BASE_URL, ''));
 const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+const normalizedHref = typeof href === 'string' ? normalizeRoute(href) : undefined;
+const isActive = normalizedHref === pathname || normalizedHref === '/' + (subpath?.[0] || '');
 const resolvedHref = typeof href === 'string' ? withBase(href) : href;
 ---
 
