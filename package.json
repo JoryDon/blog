@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "test:build-output": "astro build && node scripts/verify-build-output.mjs",
     "astro": "astro"
   },
   "dependencies": {
