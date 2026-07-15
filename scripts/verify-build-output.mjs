@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const distDirectory = new URL('../dist/', import.meta.url);
+const distDirectory = fileURLToPath(new URL('../dist/', import.meta.url));
 const productionOrigin = 'https://jinrui.netlify.app';
 
 async function collectFiles(directory) {
@@ -25,15 +26,15 @@ for (const file of textFiles) {
 	assert.equal(
 		contents.includes('https://example.com'),
 		false,
-		`${path.relative(distDirectory.pathname, file)} still contains the placeholder origin`,
+		`${path.relative(distDirectory, file)} still contains the placeholder origin`,
 	);
 }
 
-const index = await readFile(new URL('index.html', distDirectory), 'utf8');
+const index = await readFile(path.join(distDirectory, 'index.html'), 'utf8');
 assert.match(index, /<link rel="canonical" href="https:\/\/jinrui\.netlify\.app\/">/);
 assert.match(index, /href="https:\/\/jinrui\.netlify\.app\/rss\.xml"/);
 
-const rss = await readFile(new URL('rss.xml', distDirectory), 'utf8');
+const rss = await readFile(path.join(distDirectory, 'rss.xml'), 'utf8');
 assert.match(rss, /<channel>.*?<link>https:\/\/jinrui\.netlify\.app\/<\/link>/s);
 
 const rssItemLinks = [...rss.matchAll(/<item>.*?<link>([^<]+)<\/link>/gs)].map(
@@ -45,13 +46,13 @@ assert.ok(
 	`RSS contains an invalid item URL: ${rssItemLinks.join(', ')}`,
 );
 
-const sitemapIndex = await readFile(new URL('sitemap-index.xml', distDirectory), 'utf8');
+const sitemapIndex = await readFile(path.join(distDirectory, 'sitemap-index.xml'), 'utf8');
 assert.match(
 	sitemapIndex,
 	/<loc>https:\/\/jinrui\.netlify\.app\/sitemap-\d+\.xml<\/loc>/,
 );
 
-const sitemap = await readFile(new URL('sitemap-0.xml', distDirectory), 'utf8');
+const sitemap = await readFile(path.join(distDirectory, 'sitemap-0.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 assert.ok(sitemapUrls.length > 0, 'Sitemap output must include site pages');
 assert.ok(
